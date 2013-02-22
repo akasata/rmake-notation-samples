@@ -8,12 +8,26 @@ require 'rmake-notation'
 
 Rack::Handler.register 'Thin', 'Rack::Handler::Thin'
 
+class SamplePlugin
+  def target?(command)
+    command == "version"
+  end
+  
+  def execute(command, block)
+    Rmake::Notation::VERSION.to_s
+  end
+end
+
 helpers do
   def generate_contents(content)
-    @notation ||= Object.new.extend Rmake::Notation
+    unless @notation
+      @notation = Object.new.extend Rmake::Notation
+      @notation.add_plugin(SamplePlugin.new)
+    end
+    
     @notation.generate_contents content
   end
-end  
+end
 
 get "/" do
   @text = ""

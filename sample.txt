@@ -6,7 +6,7 @@ Rmakeでは HTML を使用することができません。そこで、リンク
 -Rmake Wiki
 -Rmakeのゲーム/ゲームデータ/素材の紹介文
 
-Rmake記法は以下のような機能を持ちます。
+Rmake記法(ver. [version])は以下のような機能を持ちます。
 
 -[jump 見出し 見出し]
 -[jump リンク リンク]
